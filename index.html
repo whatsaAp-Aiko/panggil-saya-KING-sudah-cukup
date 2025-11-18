@@ -1,44 +1,86 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promosi WhatsApp Aiko</title>
-    <style>
-        body { 
-            font-family: Arial; 
-            background: #f7f7f7; 
-            text-align: center; 
-            padding: 50px;
-        }
-        .box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 500px;
-            margin: auto;
-            box-shadow: 0 0 10px #ccc;
-        }
-        button {
-            background: green;
-            color: white;
-            padding: 15px 25px;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 8px;
-        }
-    </style>
+
+
+h1 {
+font-size: 28px;
+font-weight: 700;
+margin-bottom: 10px;
+}
+
+
+p {
+font-size: 16px;
+opacity: .85;
+margin-bottom: 25px;
+}
+
+
+.btn-whatsapp {
+display: inline-block;
+background: #25D366;
+color: white;
+padding: 14px 28px;
+border-radius: 50px;
+font-size: 17px;
+font-weight: 600;
+text-decoration: none;
+box-shadow: 0 0 15px rgba(37,211,102,0.5);
+transition: 0.25s;
+}
+
+
+.btn-whatsapp:hover {
+transform: scale(1.07);
+box-shadow: 0 0 25px rgba(37,211,102,0.8);
+}
+
+
+.avatar {
+width: 110px;
+height: 110px;
+border-radius: 50%;
+margin-bottom: 20px;
+border: 3px solid rgba(255,255,255,0.3);
+}
+
+
+/* Tombol melayang */
+.floating {
+position: fixed;
+bottom: 25px;
+right: 25px;
+background: #25D366;
+padding: 15px;
+border-radius: 50%;
+box-shadow: 0 0 20px rgba(37,211,102,0.6);
+animation: pop 0.6s ease-out;
+}
+
+
+@keyframes pop {
+from { transform: scale(0.5); opacity: 0; }
+to { transform: scale(1); opacity: 1; }
+}
+
+
+.floating img {
+width: 38px;
+}
+</style>
 </head>
 <body>
 
-<div class="box">
-    <h1>Selamat Datang!</h1>
-    <p>Ini adalah Landing Page Promosi WhatsApp Aiko.</p>
-    <a href="https://wa.me/628xxxxxxxxxx">
-        <button>Chat WhatsApp</button>
-    </a>
+
+<div class="card">
+<img src="https://i.ibb.co/2d1jqwY/user.png" class="avatar" alt="Avatar" />
+<h1>Selamat Datang!</h1>
+<p>Ini adalah Landing Page WhatsApp Aiko dengan tampilan modern.</p>
+<a class="btn-whatsapp" href="https://wa.me/6281234567890" target="_blank">Chat WhatsApp</a>
 </div>
 
+
+<a class="floating" href="https://wa.me/6281234567890" target="_blank">
+<img src="https://i.ibb.co/5L0Q0J5/wa.png" />
+</a>
 </body>
 </html>
