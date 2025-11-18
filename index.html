@@ -1,86 +1,122 @@
 <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Aiko - Modern Landing Page</title>
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-h1 {
-font-size: 28px;
-font-weight: 700;
-margin-bottom: 10px;
-}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
 
+    body {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: white;
+    }
 
-p {
-font-size: 16px;
-opacity: .85;
-margin-bottom: 25px;
-}
+    .box {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        width: 380px;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(0,0,0,0.2);
+        animation: fadeIn 0.8s ease-out;
+    }
 
+    .avatar {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        border: 3px solid rgba(255,255,255,.4);
+    }
 
-.btn-whatsapp {
-display: inline-block;
-background: #25D366;
-color: white;
-padding: 14px 28px;
-border-radius: 50px;
-font-size: 17px;
-font-weight: 600;
-text-decoration: none;
-box-shadow: 0 0 15px rgba(37,211,102,0.5);
-transition: 0.25s;
-}
+    h1 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
 
+    p {
+        font-size: 16px;
+        opacity: .9;
+        margin-bottom: 25px;
+    }
 
-.btn-whatsapp:hover {
-transform: scale(1.07);
-box-shadow: 0 0 25px rgba(37,211,102,0.8);
-}
+    .btn-wa {
+        display: inline-block;
+        background: #25D366;
+        color: white;
+        padding: 14px 26px;
+        border-radius: 50px;
+        font-size: 17px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 0 15px rgba(37,211,102,0.5);
+        transition: 0.25s;
+    }
 
+    .btn-wa:hover {
+        transform: scale(1.07);
+        box-shadow: 0 0 25px rgba(37,211,102,0.8);
+    }
 
-.avatar {
-width: 110px;
-height: 110px;
-border-radius: 50%;
-margin-bottom: 20px;
-border: 3px solid rgba(255,255,255,0.3);
-}
+    /* Floating Button */
+    .floating {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #25D366;
+        padding: 16px;
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(0,0,0,.3);
+        animation: pop 0.5s ease-out;
+    }
 
+    .floating img {
+        width: 40px;
+    }
 
-/* Tombol melayang */
-.floating {
-position: fixed;
-bottom: 25px;
-right: 25px;
-background: #25D366;
-padding: 15px;
-border-radius: 50%;
-box-shadow: 0 0 20px rgba(37,211,102,0.6);
-animation: pop 0.6s ease-out;
-}
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-
-@keyframes pop {
-from { transform: scale(0.5); opacity: 0; }
-to { transform: scale(1); opacity: 1; }
-}
-
-
-.floating img {
-width: 38px;
-}
+    @keyframes pop {
+        from { transform: scale(0.4); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
 </style>
 </head>
+
 <body>
 
+<div class="box">
+    <img src="https://i.ibb.co/YTq8bbL/user.png" class="avatar">
 
-<div class="card">
-<img src="https://i.ibb.co/2d1jqwY/user.png" class="avatar" alt="Avatar" />
-<h1>Selamat Datang!</h1>
-<p>Ini adalah Landing Page WhatsApp Aiko dengan tampilan modern.</p>
-<a class="btn-whatsapp" href="https://wa.me/6281234567890" target="_blank">Chat WhatsApp</a>
+    <h1>Selamat Datang!</h1>
+    <p>Ini adalah Landing Page WhatsApp Aiko dengan tampilan modern.</p>
+
+    <a href="https://wa.me/628xxx" class="btn-wa">Chat WhatsApp</a>
 </div>
 
-
-<a class="floating" href="https://wa.me/6281234567890" target="_blank">
-<img src="https://i.ibb.co/5L0Q0J5/wa.png" />
+<a href="https://wa.me/628xxx" class="floating">
+    <img src="https://i.ibb.co/jT2M43H/whatsapp.png">
 </a>
+
 </body>
 </html>
