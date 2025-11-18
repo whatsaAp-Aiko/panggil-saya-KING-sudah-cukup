@@ -1,73 +1,39 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload CSV untuk Kirim Pesan</title>
+<?php
+if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
+    // Mendapatkan informasi file
+    $fileName = $_FILES['file']['name'];
+    $fileTmpName = $_FILES['file']['tmp_name'];
+    $fileType = $_FILES['file']['type'];
+    $fileSize = $_FILES['file']['size'];
 
-    <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            background-color: #f4f7fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+    // Validasi apakah file CSV
+    if ($fileType == 'text/csv') {
+        // Menyimpan file ke direktori sementara
+        $uploadDir = 'uploads/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
         }
+        $uploadPath = $uploadDir . basename($fileName);
+        
+        // Memindahkan file ke folder
+        if (move_uploaded_file($fileTmpName, $uploadPath)) {
+            echo "File berhasil di-upload: " . $fileName . "<br>";
 
-        .container {
-            background: #1e3c72;
-            color: white;
-            border-radius: 10px;
-            padding: 40px;
-            text-align: center;
-            width: 400px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            // Membaca file CSV dan menampilkan isinya
+            if (($handle = fopen($uploadPath, 'r')) !== FALSE) {
+                while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+                    echo 'Nomor WhatsApp: ' . $data[0] . ' - Pesan: ' . $data[1] . '<br>';
+                    // Di sini kamu bisa menambahkan logika untuk mengirim pesan via WhatsApp
+                }
+                fclose($handle);
+            }
+        } else {
+            echo "Terjadi kesalahan saat meng-upload file.";
         }
-
-        h1 {
-            font-size: 26px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 16px;
-            opacity: 0.8;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            background-color: #25D366;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
-            transition: 0.25s;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.8);
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>Upload CSV untuk Kirim Pesan</h1>
-    <p>Silakan pilih file CSV yang akan di-upload dan dikirimkan pesan melalui WhatsApp.</p>
-
-    <!-- Form untuk Upload File CSV -->
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".csv" required>
-        <br><br>
-        <button type="submit" class="btn">Upload & Kirim Pesan</button>
-    </form>
-</div>
-
-</body>
-</html>
+    } else {
+        echo "Hanya file CSV yang diperbolehkan.";
+    }
+} else {
+    echo "File tidak di-upload atau terjadi kesalahan.";
+}
+?>
