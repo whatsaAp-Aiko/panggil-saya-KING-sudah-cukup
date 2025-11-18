@@ -1,5 +1,4 @@
 <?php
-// Pastikan file di-upload dan memeriksa error
 if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
     // Mendapatkan informasi file
     $fileName = $_FILES['file']['name'];
@@ -23,9 +22,7 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
             // Membaca file CSV dan menampilkan isinya
             if (($handle = fopen($uploadPath, 'r')) !== FALSE) {
                 while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
-                    // Misalnya menampilkan data dari setiap baris CSV
                     echo 'Nomor WhatsApp: ' . $data[0] . ' - Pesan: ' . $data[1] . '<br>';
-                    // Di sini bisa menambahkan logika untuk mengirim pesan via WhatsApp
                 }
                 fclose($handle);
             }
